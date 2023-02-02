@@ -3,7 +3,7 @@
 
 const start = (() => {
     const gameBoard = {
-        boardArray: ['x','x','x','o','o','o','x','x','x'],
+        boardArray: ['','','','','','','','',''],
         init: function() {
             this.cacheDom();
             this.render();
@@ -30,7 +30,7 @@ const start = (() => {
             });
         },
         placePiece: function() {
-            alert("clicked!");
+            this.textContent = "X";
         }
     };
     gameBoard.init();
