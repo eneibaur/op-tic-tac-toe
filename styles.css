@@ -2,3 +2,11 @@ div {
     padding: 10px;
     border: 1px solid red;
 }
+
+.board {
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    gap: 15px;
+}
