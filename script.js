@@ -9,10 +9,12 @@ const start = (() => {
             this.render();
             this.bindEvents();
         }, 
+
         cacheDom: function() {
             this.board = document.querySelector('.board');
             this.cell = document.querySelector('#gamecell');
         },
+
         render: function() {
             this.board.innerHtml = "";
             this.boardArray.forEach(element => {
@@ -20,18 +22,21 @@ const start = (() => {
                 clone.querySelector('.piece').textContent = element;
                 this.board.append(clone);
             });
+            this.boardPosition = [].slice.call(this.board.querySelectorAll('.square'), 0);
+            console.log(this.boardPosition)
         },
-        bindEvents: function() {
-            const squares = document.querySelectorAll('.square');
-            squares.forEach(element => {
-                element.addEventListener('click', () => {
-                    this.placePiece();
-                });
+
+        placePiece: function(e) {
+            const index = this.boardPosition.indexOf(e.target)
+            console.log(index);
+        },
+
+        bindEvents: function() {            
+            this.board.addEventListener('click', (e) => {
+                this.placePiece(e);
             });
         },
-        placePiece: function() {
-            this.textContent = "X";
-        }
+
     };
     gameBoard.init();
 })();
