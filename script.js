@@ -49,7 +49,9 @@ const start = (() => {
             while (parent.firstChild) {
                 parent.removeChild(parent.firstChild);
             }
-        },
+        }
+        
     };
     gameBoard.init();
+    return gameBoard.placePiece;
 })();
