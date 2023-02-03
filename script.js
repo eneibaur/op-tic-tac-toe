@@ -13,6 +13,8 @@ const start = (() => {
         cacheDom: function() {
             this.board = document.querySelector('.board');
             this.cell = document.querySelector('#gamecell');
+            // Make array for each square in the grid to log when it's clicked
+            this.boardPosition = [].slice.call(this.board.querySelectorAll('.square'), 0);
         },
 
         render: function() {
@@ -22,8 +24,13 @@ const start = (() => {
                 clone.querySelector('.piece').textContent = element;
                 this.board.append(clone);
             });
-            // Make array for each square in the grid to log when it's clicked
-            this.boardPosition = [].slice.call(this.board.querySelectorAll('.square'), 0);
+            this.cacheDom();
+        },
+
+        bindEvents: function() {            
+            this.board.addEventListener('click', (e) => {
+                this.placePiece(e);
+            });
         },
 
         placePiece: function(e) {
@@ -35,13 +42,7 @@ const start = (() => {
             }
             this.render();
         },
-
-        bindEvents: function() {            
-            this.board.addEventListener('click', (e) => {
-                this.placePiece(e);
-            });
-        },
-
+        
         clearBoard: function(parent) {
             while (parent.firstChild) {
                 parent.removeChild(parent.firstChild);
