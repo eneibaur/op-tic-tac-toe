@@ -24,6 +24,8 @@ const start = (() => {
                 clone.querySelector('.piece').textContent = element;
                 this.board.append(clone);
             });
+            // To capture the boardPosition array (which does not exist until board is rendered)
+            // for future use
             this.cacheDom();
         },
 
