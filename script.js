@@ -53,5 +53,4 @@ const start = (() => {
         
     };
     gameBoard.init();
-    return gameBoard.placePiece;
 })();
