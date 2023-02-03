@@ -28,7 +28,11 @@ const start = (() => {
 
         placePiece: function(e) {
             const index = this.boardPosition.indexOf(e.target)
-            console.log(index);
+            if (this.boardArray[index] === '') {
+                this.boardArray[index] = 'x'
+            } else {
+                return;
+            }
         },
 
         bindEvents: function() {            
