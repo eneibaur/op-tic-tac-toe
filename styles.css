@@ -10,3 +10,10 @@ div {
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
     gap: 15px;
 }
+
+.players {
+    width: 50%;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+}
