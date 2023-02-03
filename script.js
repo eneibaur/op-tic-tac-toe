@@ -16,14 +16,14 @@ const start = (() => {
         },
 
         render: function() {
-            this.board.innerHtml = "";
+            this.clearBoard(this.board)
             this.boardArray.forEach(element => {
                 const clone = this.cell.content.cloneNode(true);
                 clone.querySelector('.piece').textContent = element;
                 this.board.append(clone);
             });
+            // Make array for each square in the grid to log when it's clicked
             this.boardPosition = [].slice.call(this.board.querySelectorAll('.square'), 0);
-            console.log(this.boardPosition)
         },
 
         placePiece: function(e) {
@@ -33,6 +33,7 @@ const start = (() => {
             } else {
                 return;
             }
+            this.render();
         },
 
         bindEvents: function() {            
@@ -41,6 +42,11 @@ const start = (() => {
             });
         },
 
+        clearBoard: function(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+        },
     };
     gameBoard.init();
 })();
