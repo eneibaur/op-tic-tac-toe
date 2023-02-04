@@ -56,17 +56,26 @@ const board = (() => {
 })();
 
 const players = (() => {
-    const playerModule = {
-        playerScore: [0,0],
-        init: function() {
-            this.cacheDom()
-        },
-        cacheDom() {
-            this.playerArea = document.querySelector('.players');
-            this.playerOne = document.querySelector('.player1');
-            this.playerTwo = document.querySelector('.player2');
+    const playerScore = [0,0]
+
+    let playerArea = document.querySelector('.players');
+    let playerOne = document.querySelector('#player1');
+    let playerTwo = document.querySelector('#player2');
+
+    function changePlayer() {
+        if (playerOne.classList.contains('active')) {
+            playerOne.className = "inactive";
+            playerTwo.className = "active";
+            alert('active!')
+        } else {
+            playerOne.className = "active";
+            playerTwo.className = "inactive";
+            alert('inactive!')
         }
+    }
+
+    return {
+        changePlayer: changePlayer
     };
-    playerModule.init();
 })();
 
