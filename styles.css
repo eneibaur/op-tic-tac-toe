@@ -22,8 +22,13 @@ div {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 p {
     text-align: center;
+}
+
+.piece {
+    font-size: 10rem;
 }
