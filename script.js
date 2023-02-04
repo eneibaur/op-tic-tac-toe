@@ -28,6 +28,7 @@ const gameBoard = (() => {
         const index = boardPosition.indexOf(e.target)
         if (boardArray[index] === '') {
             boardArray[index] = 'x'
+            players.changePlayer();
         } else {
             return;
         }
@@ -42,6 +43,10 @@ const gameBoard = (() => {
 
     render()
 
+    return {
+        board: boardArray
+    }
+
 })();
 
 const players = (() => {
@@ -55,17 +60,15 @@ const players = (() => {
         if (playerOne.classList.contains('active')) {
             playerOne.className = "inactive";
             playerTwo.className = "active";
-            alert('active!')
         } else {
             playerOne.className = "active";
             playerTwo.className = "inactive";
-            alert('inactive!')
         }
     }
 
     return {
         changePlayer: changePlayer
     };
-    
+
 })();
 
