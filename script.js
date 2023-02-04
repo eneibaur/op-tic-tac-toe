@@ -3,12 +3,11 @@
 
 const gameBoard = (() => {
     const boardArray = ['','','','','','','','',''];
-
+    let playerPiece = "";
     // cache DOM
     let board = document.querySelector('.board');
     let cell = document.querySelector('#gamecell');
-    let boardPosition = [].slice.call(board.querySelectorAll('.square'), 0);
-    
+    let boardPosition = [].slice.call(board.querySelectorAll('.square'), 0);  
     function render() {
         clearBoard(board)
         boardArray.forEach(element => {
@@ -18,35 +17,37 @@ const gameBoard = (() => {
         });
         boardPosition = [].slice.call(board.querySelectorAll('.square'), 0);
     }
-
     // bind events
     board.addEventListener('click', (e) => {
         placePiece(e);
-    });
-    
+    });  
     function placePiece(e) {
         const index = boardPosition.indexOf(e.target)
+        setPlayerPiece()
         if (boardArray[index] === '') {
-            boardArray[index] = 'x'
+            boardArray[index] = playerPiece
             players.changePlayer();
         } else {
             return;
         }
         render();
     };
-
+    function setPlayerPiece() {
+        if (players.currentPlayer === "1") {
+            playerPiece = "X";
+        } else {
+            playerPiece = "O";
+        }
+    }
     function clearBoard(parent) {
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
     }
-
     render()
-
     return {
         board: boardArray
     }
-
 })();
 
 const players = (() => {
@@ -55,19 +56,23 @@ const players = (() => {
     let playerArea = document.querySelector('.players');
     let playerOne = document.querySelector('#player1');
     let playerTwo = document.querySelector('#player2');
+    let activePlayer = "1";
 
     function changePlayer() {
         if (playerOne.classList.contains('active')) {
             playerOne.className = "inactive";
             playerTwo.className = "active";
+            activePlayer = "2";
         } else {
             playerOne.className = "active";
             playerTwo.className = "inactive";
+            activePlayer = "1";
         }
     }
 
     return {
-        changePlayer: changePlayer
+        changePlayer: changePlayer,
+        currentPlayer: activePlayer
     };
 
 })();
