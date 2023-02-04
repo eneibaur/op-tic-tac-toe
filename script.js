@@ -56,23 +56,23 @@ const players = (() => {
     let playerArea = document.querySelector('.players');
     let playerOne = document.querySelector('#player1');
     let playerTwo = document.querySelector('#player2');
-    let activePlayer = "1";
 
     function changePlayer() {
+        let activePlayer = "1"
         if (playerOne.classList.contains('active')) {
             playerOne.className = "inactive";
             playerTwo.className = "active";
-            activePlayer = "2";
         } else {
             playerOne.className = "active";
             playerTwo.className = "inactive";
-            activePlayer = "1";
         }
+        return activePlayer
     }
+
+    let activePlayer = changePlayer;
 
     return {
         changePlayer: changePlayer,
-        currentPlayer: activePlayer
     };
 
 })();
