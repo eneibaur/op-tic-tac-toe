@@ -1,7 +1,7 @@
 // Gameboard module: an object that has only one outward facing
 // component, the "add mark" component.
 
-const start = (() => {
+const board = (() => {
     const gameBoard = {
         boardArray: ['','','','','','','','',''],
         init: function() {
@@ -54,3 +54,19 @@ const start = (() => {
     };
     gameBoard.init();
 })();
+
+const players = (() => {
+    const playerModule = {
+        playerScore: [0,0],
+        init: function() {
+            this.cacheDom()
+        },
+        cacheDom() {
+            this.playerArea = document.querySelector('.players');
+            this.playerOne = document.querySelector('.player1');
+            this.playerTwo = document.querySelector('.player2');
+        }
+    };
+    playerModule.init();
+})();
+
