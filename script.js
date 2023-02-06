@@ -32,13 +32,13 @@ const gameTracker = ((array) => {
 
     let checkWin = (boardArray) => {
         // // check rows
-        // for (let i = 0; i < 8; i+3){
-        //     if (boardArray[i] != "" &&
-        //         boardArray[i] === boardArray[i+1] &&
-        //         boardArray[i+1] === boardArray[i+2]){
-        //             return true;
-        //         }
-        // };
+        for (let i = 0; i < 8; i += 3){
+            if (boardArray[i] != "" &&
+                boardArray[i] === boardArray[i+1] &&
+                boardArray[i+1] === boardArray[i+2]){
+                    return true;
+                }
+        };
         // check columns
         for (let j = 0; j < 3; j++) {
             if (boardArray[j] != "" &&
