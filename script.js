@@ -27,6 +27,43 @@ const players = (() => {
 
 })();
 
+const gameTracker = ((array) => {
+    let boardArray = array;
+
+    let checkWin = (boardArray) => {
+        // check rows
+        for (let i = 0; i < 8; i+3){
+            if (boardArray[i] != "" &&
+                boardArray[i] === boardArray[i+1] &&
+                boardArray[i+1] === boardArray[i+2]){
+                    return true;
+                }
+        };
+        // check columns
+        for (let j = 0; j < 3; j++) {
+            if (boardArray[j] != "" &&
+                boardArray[j] === boardArray[j+3] &&
+                boardArray[j+3] === boardArray[j+6]){
+                    return true;
+                }
+        };
+        // check diagonal
+        if (boardArray[4] != ""){
+            if ((boardArray[4] === boardArray[0] &&
+                boardArray[4] === boardArray[8]) ||
+                (boardArray[4] === boardArray[2] &&
+                boardArray[4] === boardArray[6])) {
+                    return true;
+                };
+        };
+
+    return {
+        checkWin : checkWin
+    }
+    }
+
+})();
+
 const gameBoard = (() => {
     const boardArray = ['','','','','','','','',''];
     let currentPlayer = "1";
@@ -55,6 +92,10 @@ const gameBoard = (() => {
         const index = boardPosition.indexOf(e.target)
         if (boardArray[index] === '') {
             boardArray[index] = playerPiece;
+            // Insert game check here!
+            if (gameTracker.checkWin(boardArray)){
+                alert(`${currentPlayer} wins!`)
+            };
             currentPlayer = players.changePlayer();
             setPlayerPiece();
         } else {
@@ -84,4 +125,3 @@ const gameBoard = (() => {
     }
 
 })();
-
