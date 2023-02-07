@@ -77,7 +77,7 @@ const gameTracker = ((array) => {
 })();
 
 const gameBoard = (() => {
-    const boardArray = ['','','','','','','','',''];
+    let boardArray = ['','','','','','','','',''];
     let currentPlayer = "1";
     let playerPiece = "X";
     // cache DOM
@@ -107,6 +107,15 @@ const gameBoard = (() => {
             // Insert game check here!
             if (gameTracker.checkWin(boardArray)){
                 alert(`${currentPlayer} wins!`)
+                players.addWin()
+                boardArray = ['','','','','','','','','']
+                // resets the player to player 1
+                if (currentPlayer === "1"){
+                    currentPlayer = players.changePlayer();
+                    setPlayerPiece();
+                }
+                render()
+                return;
             };
             currentPlayer = players.changePlayer();
             setPlayerPiece();
