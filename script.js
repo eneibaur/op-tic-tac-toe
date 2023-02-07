@@ -44,7 +44,7 @@ const gameTracker = ((array) => {
     let boardArray = array;
 
     let checkWin = (boardArray) => {
-        // // check rows
+        // check rows
         for (let i = 0; i < 8; i += 3){
             if (boardArray[i] != "" &&
                 boardArray[i] === boardArray[i+1] &&
@@ -68,6 +68,14 @@ const gameTracker = ((array) => {
                 boardArray[4] === boardArray[6])) {
                     return true;
                 };
+        };
+        // check for tie
+        for (let i = 0; i <= 8; i ++){
+            if (boardArray[i] === "") {
+                break;
+            } else if (i === 8 && boardArray[i] !== ""){
+                return "tie";
+            }
         };
     }
     return {
@@ -104,17 +112,15 @@ const gameBoard = (() => {
         const index = boardPosition.indexOf(e.target)
         if (boardArray[index] === '') {
             boardArray[index] = playerPiece;
-            // Insert game check here!
+            if (gameTracker.checkWin(boardArray) === "tie") {
+                alert(`It's a tie!`)
+                resetBoard()
+                return
+            }
             if (gameTracker.checkWin(boardArray)){
                 alert(`${currentPlayer} wins!`)
                 players.addWin()
-                boardArray = ['','','','','','','','','']
-                // resets the player to player 1
-                if (currentPlayer === "1"){
-                    currentPlayer = players.changePlayer();
-                    setPlayerPiece();
-                }
-                render()
+                resetBoard()
                 return;
             };
             currentPlayer = players.changePlayer();
@@ -137,6 +143,16 @@ const gameBoard = (() => {
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
+    }
+
+    function resetBoard() {
+        boardArray = ['','','','','','','','','']
+        // resets the player to player 1
+        if (currentPlayer === "1"){
+            currentPlayer = players.changePlayer();
+            setPlayerPiece();                   
+        }
+        render()
     }
 
     render()
