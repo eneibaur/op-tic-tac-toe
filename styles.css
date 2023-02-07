@@ -66,10 +66,18 @@ p {
     animation-name: color;
     animation-duration: 1.5s; 
     animation-iteration-count: infinite;
+    padding: 2px;
 }
 
 .inactive {
     background-color: white;
+    padding: 2px;
+}
+
+.score {
+    text-align: center;
+    font-size: small;
+    margin-top: -3rem;
 }
 
 @keyframes color {
