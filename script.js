@@ -118,7 +118,7 @@ const gameBoard = (() => {
                 return
             }
             if (gameTracker.checkWin(boardArray)){
-                alert(`${currentPlayer} wins!`)
+                alert(`Player ${parseInt(currentPlayer) + 1} wins!`)
                 players.addWin()
                 resetBoard()
                 return;
