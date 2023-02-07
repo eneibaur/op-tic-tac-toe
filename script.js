@@ -7,18 +7,24 @@ const players = (() => {
     let playerArea = document.querySelector('.players');
     let playerOne = document.querySelector('#player1');
     let playerTwo = document.querySelector('#player2');
-    let activePlayer = "1"
+    let oneScore = document.querySelector('.score1');
+    let twoScore = document.querySelector('.score2');
+    let activePlayer = "0"
 
     function changePlayer() {
         if (playerOne.classList.contains('active')) {
             playerOne.className = "inactive";
             playerTwo.className = "active";
-            return activePlayer = "2";
+            return activePlayer = "1";
         } else {
             playerOne.className = "active";
             playerTwo.className = "inactive";
-            return activePlayer = "1";
+            return activePlayer = "0";
         }
+    }
+
+    function addWin() {
+
     }
 
     return {
@@ -104,7 +110,7 @@ const gameBoard = (() => {
     };
     
     function setPlayerPiece() {
-        if (currentPlayer == "1") {
+        if (currentPlayer == "0") {
             playerPiece = "X";
         } else {
             playerPiece = "O";
