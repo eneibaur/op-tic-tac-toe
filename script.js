@@ -13,12 +13,12 @@ const players = (() => {
 
     function changePlayer() {
         if (playerOne.classList.contains('active')) {
-            playerOne.className = "inactive";
-            playerTwo.className = "active";
+            playerOne.className = "inactive playername";
+            playerTwo.className = "active playername";
             return activePlayer = "1";
         } else {
-            playerOne.className = "active";
-            playerTwo.className = "inactive";
+            playerOne.className = "active playername";
+            playerTwo.className = "inactive playername";
             return activePlayer = "0";
         }
     }

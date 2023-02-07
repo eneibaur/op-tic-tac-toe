@@ -62,16 +62,19 @@ p {
     font-size: 10rem;
 }
 
+.playername {
+    border-radius: 1rem;
+    padding: 2px;
+}
+
 .active {
     animation-name: color;
     animation-duration: 1.5s; 
     animation-iteration-count: infinite;
-    padding: 2px;
 }
 
 .inactive {
     background-color: white;
-    padding: 2px;
 }
 
 .score {
