@@ -24,11 +24,18 @@ const players = (() => {
     }
 
     function addWin() {
+        playerScore[activePlayer] += 1;
+        render();
+    }
 
+    function render() {
+        oneScore.innerText = playerScore[0];
+        twoScore.innerText = playerScore[1];
     }
 
     return {
         changePlayer: changePlayer,
+        addWin: addWin,
     };
 
 })();
